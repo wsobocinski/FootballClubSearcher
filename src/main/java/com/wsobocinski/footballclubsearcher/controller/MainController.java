@@ -26,7 +26,7 @@ public class MainController {
         PagesModel apiResult = restTemplate.getForObject(API_URL + query, PagesModel.class);
         Optional<Page> filteredResult =  apiResult.getPages().stream()
                 .filter(p -> p.getDescription() != null)
-                .filter(p -> p.getDescription().contains("football"))
+                .filter(p -> p.getDescription().contains("football club"))
                 .findAny();
 
         return filteredResult.map(page -> new ResponseEntity<>(WIKIPEDIA_URL + page.getKey(), HttpStatus.OK))
